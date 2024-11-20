@@ -10,6 +10,7 @@ extends Control
 @export var ExtractIndexMap : Button
 @export var SaveMap : Button 
 @export var SavePalette: Button
+@export var SavePaletteGradient: Button
 
 var imagePalette
 var indexMap
@@ -21,15 +22,26 @@ func _ready():
 	ExtractIndexMap.pressed.connect(on_extract_index_map)
 	SaveMap.pressed.connect(on_save_map)
 	SavePalette.pressed.connect(on_save_palette)
+	SavePaletteGradient.pressed.connect(on_save_palette_gradient)
 
 func on_save_palette():
 	if ImagePalette == null:
 		show_dialog("Drag Image Palette texture2d or Extract first.")
 		return
-	
+
 	var path = SourceTextureRect.texture.resource_path.get_basename()
 	var image = ImagePaletteExtensions.create_image(imagePalette)
 	image.save_png(path + "_palette.png")
+	EditorInterface.get_resource_filesystem().scan()
+
+func on_save_palette_gradient():
+	if ImagePalette == null:
+		show_dialog("Drag Image Palette texture2d or Extract first.")
+		return
+
+	var g1d = ImagePaletteExtensions.create_gradient_1d(ImagePaletteExtensions.create_gradient(imagePalette))
+	var path = SourceTextureRect.texture.resource_path.get_basename()
+	ResourceSaver.save(g1d,path+"_gradient_texture_1d.tres")
 	EditorInterface.get_resource_filesystem().scan()
 
 func on_save_map():

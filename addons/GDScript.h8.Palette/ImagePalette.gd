@@ -44,8 +44,12 @@ static func create_palette_from_texture(sourceTexture: Texture) -> ImagePalette:
 			var colorAtSource = clear_rgb_if_no_alpha(sourcePixels.get_pixel(i, j))
 			if not palette.contains_color(colorAtSource):
 				palette.add_color(colorAtSource)
-	
+	palette.ColorsInPalette.sort_custom(compare_color_brightness) #This sorts. Could be moved to separate button?
 	return palette
+
+static func compare_color_brightness(a:PaletteColor,b:PaletteColor)->bool:
+	if a.color.v<b.color.v: return true
+	else: return false
 
 static func clear_rgb_if_no_alpha(colorToClear: Color) -> Color:
 	var clearedColor = colorToClear

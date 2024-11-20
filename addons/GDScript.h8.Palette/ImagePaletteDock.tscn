@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://addons/GDScript.h8.Palette/ImagePaletteDock.gd" id="1_52a1h"]
 
-[node name="ImagePalatteDock" type="Control" node_paths=PackedStringArray("SourceTextureRect", "IndexMapRect", "PaletteRect", "ClearPalette", "ExtractPalette", "ExtractIndexMap", "SaveMap", "SavePalette")]
+[node name="ImagePalatteDock" type="Control" node_paths=PackedStringArray("SourceTextureRect", "IndexMapRect", "PaletteRect", "ClearPalette", "ExtractPalette", "ExtractIndexMap", "SaveMap", "SavePalette", "SavePaletteGradient")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,6 +20,7 @@ ExtractPalette = NodePath("HSplitContainer/VBoxContainer/HBoxContainer/ExtractPa
 ExtractIndexMap = NodePath("HSplitContainer/VBoxContainer/ExtractIndexMap")
 SaveMap = NodePath("HSplitContainer/VBoxContainer/SaveMap")
 SavePalette = NodePath("HSplitContainer/VBoxContainer/SavePalette")
+SavePaletteGradient = NodePath("HSplitContainer/VBoxContainer/SavePaletteGradient")
 
 [node name="HSplitContainer" type="HSplitContainer" parent="."]
 layout_mode = 1
@@ -77,21 +78,25 @@ layout_mode = 2
 [node name="ExtractPalette" type="Button" parent="HSplitContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Extract Plette"
+text = "Extract Palette"
 
 [node name="ClearPalatte" type="Button" parent="HSplitContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Clear Pelette
+text = "Clear Palette
 "
 
 [node name="ExtractIndexMap" type="Button" parent="HSplitContainer/VBoxContainer"]
 layout_mode = 2
-text = "Exctract Index Map"
+text = "Extract Index Map"
 
 [node name="SavePalette" type="Button" parent="HSplitContainer/VBoxContainer"]
 layout_mode = 2
 text = "Save Palette Texture"
+
+[node name="SavePaletteGradient" type="Button" parent="HSplitContainer/VBoxContainer"]
+layout_mode = 2
+text = "Save Palette Gradient1d"
 
 [node name="SaveMap" type="Button" parent="HSplitContainer/VBoxContainer"]
 layout_mode = 2
